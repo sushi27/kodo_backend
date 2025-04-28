@@ -1,7 +1,6 @@
-import { Post } from '../interface/Post';
-import { SearchService } from '../interface/SearchService';
-import { SimpleSearchService } from '../service/SearchService';
-import { LoadPostsData } from '../service/LoadPostsData';
+import { Post, SearchService } from '../interfaces';
+import SearchServiceFactory from '../factories/SearchServiceFactory';
+import LoadPostsData from '../utils/LoadPostsData';
 import express from 'express';
 
 const app = express();
@@ -11,7 +10,7 @@ const app = express();
   await loadPostsData.loadData();
   const posts: Post[] = loadPostsData.getPosts();
 
-  const searchService: SearchService = new SimpleSearchService();
+  const searchService: SearchService = SearchServiceFactory.getSearchService('simple');
 
   app.get('/search', (req, res) => {
     const query = req.query.q as string || '';

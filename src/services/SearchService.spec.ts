@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { Post } from '../interface/Post';
+import { Post } from '../interfaces';
 import { SimpleSearchService } from './SearchService';
 
 describe('Search Service', () => {

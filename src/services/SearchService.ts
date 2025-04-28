@@ -1,5 +1,4 @@
-import { SearchService } from '../interface/SearchService';
-import { Post } from '../interface/Post';
+import { Post, SearchService } from '../interfaces';
 
 class SimpleSearchService implements SearchService {
   search(query: string, data: Post[]): Post[] {

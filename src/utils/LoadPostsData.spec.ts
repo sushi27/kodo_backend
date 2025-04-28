@@ -1,9 +1,8 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
 import fs from 'fs/promises';
-import path from 'path';
-import { LoadPostsData } from './LoadPostsData';
-import { Post } from '../interface/Post';
+import LoadPostsData from './LoadPostsData';
+import { Post } from '../interfaces';
 
 describe('LoadPostsData', () => {
   let sandbox: sinon.SinonSandbox;

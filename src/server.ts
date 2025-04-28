@@ -1,5 +1,5 @@
 import express from 'express';
-import PostController from './controller/post.contoller';
+import PostController from './controllers/post.contoller';
 
 const app = express();
 const port = process.env.PORT || 3000;

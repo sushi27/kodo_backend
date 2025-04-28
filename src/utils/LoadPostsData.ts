@@ -1,4 +1,4 @@
-import { Post } from '../interface/Post';
+import { Post } from '../interfaces';
 import fs from 'fs/promises';
 import path from 'path';
 
@@ -33,6 +33,4 @@ class LoadPostsData {
   }
 }
 
-export {
-  LoadPostsData
-}
+export default LoadPostsData
