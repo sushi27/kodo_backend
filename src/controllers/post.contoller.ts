@@ -4,15 +4,12 @@ import LoadPostsData from '../utils/LoadPostsData';
 import express from 'express';
 
 const router = express.Router();
+const loadPostsData: LoadPostsData = LoadPostsData.getInstance();
+const searchService: SearchService = SearchServiceFactory.createSearchService();
 
-(async () => {
-  const loadPostsData: LoadPostsData = LoadPostsData.getInstance();
-  await loadPostsData.loadData();
-  const posts: Post[] = loadPostsData.getPosts();
-
-  const searchService: SearchService = SearchServiceFactory.createSearchService();
-
-  router.get('/search', (req, res) => {
+router.get('/search', (req, res) => {
+  try {
+    const posts = loadPostsData.getPosts();
     const query = req.query.q as string || '';
     const results = searchService.search(query, posts);
     res.json({
@@ -20,11 +17,24 @@ const router = express.Router();
       count: results.length,
       results
     });
-  });
+  } catch (error) {
+    console.error('Search error:', error);
+    res.status(500).json({
+      error: 'An error occurred while processing the search request'
+    });
+  }
+});
 
-  router.get('', (_, res) => {
+router.get('', (_, res) => {
+  try {
+    const posts = loadPostsData.getPosts();
     res.json(posts);
-  });
-})();
+  } catch (error) {
+    console.error('Error retrieving posts:', error);
+    res.status(500).json({
+      error: 'An error occurred while retrieving posts'
+    });
+  }
+});
 
 export default router;
