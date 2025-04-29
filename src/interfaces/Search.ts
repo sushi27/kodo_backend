@@ -4,14 +4,6 @@ export interface SearchService {
   search(query: string, data: Post[]): Post[];
 }
 
-export interface SearchParams {
-  query: string;
-  sortBy?: 'name' | 'dateLastEdited';
-  sortOrder?: 'asc' | 'desc';
-  page?: number;
-  pageSize?: number;
-}
-
 export interface SearchResult {
   totalCount: number;
   page: number;
