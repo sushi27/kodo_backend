@@ -3,7 +3,7 @@ import SearchServiceFactory from '../factories/SearchServiceFactory';
 import LoadPostsData from '../utils/LoadPostsData';
 import express from 'express';
 
-const app = express();
+const router = express.Router();
 
 (async () => {
   const loadPostsData: LoadPostsData = LoadPostsData.getInstance();
@@ -12,7 +12,7 @@ const app = express();
 
   const searchService: SearchService = SearchServiceFactory.createSearchService();
 
-  app.get('/search', (req, res) => {
+  router.get('/search', (req, res) => {
     const query = req.query.q as string || '';
     const results = searchService.search(query, posts);
     res.json({
@@ -22,9 +22,9 @@ const app = express();
     });
   });
 
-  app.get('', (_, res) => {
+  router.get('', (_, res) => {
     res.json(posts);
   });
 })();
 
-export default app;
+export default router;
