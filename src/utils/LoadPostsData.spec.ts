@@ -3,6 +3,7 @@ import sinon from 'sinon';
 import fs from 'fs/promises';
 import LoadPostsData from './LoadPostsData';
 import { Post } from '../interfaces';
+import MockPostsData from '../mocks/Posts'
 
 describe('LoadPostsData', () => {
   let sandbox: sinon.SinonSandbox;
@@ -10,20 +11,7 @@ describe('LoadPostsData', () => {
   let consoleLogSpy: sinon.SinonSpy;
   let consoleErrorSpy: sinon.SinonSpy;
 
-  const mockPosts: Post[] = [
-    {
-      name: 'Test Post 1',
-      image: 'https://picsum.photos/640/480',
-      description: 'This is a test post',
-      dateLastEdited: '2023-01-01T12:00:00.000Z'
-    },
-    {
-      name: 'Test Post 2',
-      image: 'https://picsum.photos/640/480',
-      description: 'This is another test post',
-      dateLastEdited: '2023-01-02T12:00:00.000Z'
-    }
-  ];
+  const mockPosts: Post[] = MockPostsData
 
   beforeEach(() => {
     sandbox = sinon.createSandbox();
