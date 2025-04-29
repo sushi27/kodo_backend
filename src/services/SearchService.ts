@@ -1,6 +1,6 @@
 import { Post, SearchService } from '../interfaces';
 
-class SimpleSearchService implements SearchService {
+export class SimpleSearchService implements SearchService {
   search(query: string, data: Post[]): Post[] {
     if (!query || query.trim() === '') {
       return [...data];
@@ -32,8 +32,4 @@ class SimpleSearchService implements SearchService {
       return nameMatch || descriptionMatch;
     });
   }
-}
-
-export {
-  SimpleSearchService
 }

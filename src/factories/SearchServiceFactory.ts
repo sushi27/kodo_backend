@@ -1,16 +1,12 @@
-import { SearchService } from '../interfaces/SearchService';
+import { SearchService, SearchServiceType } from '../interfaces';
 import { SimpleSearchService } from '../services/SearchService';
 
-class SearchServiceFactory {
-
-  static getSearchService(caseType: string): SearchService {
-    switch (caseType) {
-      case 'simple':
-        return new SimpleSearchService();
+export default class SearchServiceFactory {
+  static createSearchService(type: SearchServiceType = SearchServiceType.SIMPLE): SearchService {
+    switch (type) {
+      case SearchServiceType.SIMPLE:
       default:
         return new SimpleSearchService();
     }
   }
 }
-
-export default SearchServiceFactory

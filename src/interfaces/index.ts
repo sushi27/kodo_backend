@@ -1,2 +1,5 @@
 export * from "./Post";
-export * from "./SearchService";
+export * from "./Search";
+export * from "./Sort";
+export * from "./Paginate";
+export * from "./Service";

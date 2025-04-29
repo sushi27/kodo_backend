@@ -10,7 +10,7 @@ const app = express();
   await loadPostsData.loadData();
   const posts: Post[] = loadPostsData.getPosts();
 
-  const searchService: SearchService = SearchServiceFactory.getSearchService('simple');
+  const searchService: SearchService = SearchServiceFactory.createSearchService();
 
   app.get('/search', (req, res) => {
     const query = req.query.q as string || '';
